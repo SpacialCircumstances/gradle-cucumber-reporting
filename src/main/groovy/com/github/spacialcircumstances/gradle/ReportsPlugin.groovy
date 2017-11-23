@@ -9,7 +9,7 @@ class ReportsPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         def extension = project.extensions.create('cucumberReports', ReportsPluginExtension)
-        Task reportTask = project.task('createCucumberReports', type: CreateReportFilesTask) {
+        Task reportTask = project.task('generateCucumberReports', type: CreateReportFilesTask) {
             description = "Creates cucumber html reports"
             projectName = project.displayName
         }
