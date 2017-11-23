@@ -17,15 +17,12 @@ class CreateReportFilesTask extends DefaultTask {
                 String buildName = project.extensions.cucumberReports.buildName
                 Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
                 ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
+                Map<String, String> classifications = project.extensions.cucumberReports.classifications
+
                 File outputDirectory = new File(outputDir)
                 if (!outputDirectory.exists()) {
                     outputDirectory.mkdirs()
                 }
-
-                Configuration config = new Configuration(outputDirectory, projectName)
-                config.setRunWithJenkins(false)
-                config.setBuildNumber(buildName)
-                config.setParallelTesting(parallelTesting)
 
                 //Check if reports exist
                 List<String> existentFiles = new ArrayList<>()
@@ -36,7 +33,16 @@ class CreateReportFilesTask extends DefaultTask {
                         println "Reports file ${file.path} not found"
                     }
                 }
-                
+
+                Configuration config = new Configuration(outputDirectory, projectName)
+                config.setRunWithJenkins(false)
+                config.setBuildNumber(buildName)
+                config.setParallelTesting(parallelTesting)
+                //Add custom classifications
+                for(Map.Entry<String, String> c: classifications) {
+                    config.addClassifications(c.key, c.value)
+                }
+
                 println "Generating reports..."
                 ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
                 Reportable report = reportBuilder.generateReports()
