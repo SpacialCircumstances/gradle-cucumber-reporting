@@ -8,11 +8,5 @@ class ReportsPluginExtension {
     String outputDir
     String buildName
     ConfigurableFileCollection reports
-    ReportsPluginExtension(Project project) {
-        reports = project.files()
-    }
-
-    void setReports(FileCollection reportFiles) {
-        reports.setFrom(reportFiles)
-    }
+    Boolean parallelTesting = false
 }

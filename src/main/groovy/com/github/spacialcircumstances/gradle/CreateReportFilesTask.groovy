@@ -14,6 +14,7 @@ class CreateReportFilesTask extends DefaultTask {
     void createReportFiles() {
         String outputDir = project.extensions.cucumberReports.outputDir
         String buildName = project.extensions.cucumberReports.buildName
+        Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
         ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
         File outputDirectory = new File(outputDir)
         if(!outputDirectory.exists()) {
@@ -23,6 +24,7 @@ class CreateReportFilesTask extends DefaultTask {
         Configuration config = new Configuration(outputDirectory, projectName)
         config.setRunWithJenkins(false)
         config.setBuildNumber(buildName)
+        config.setParallelTesting(parallelTesting)
 
         //Check if reports exist
         List<String> existentFiles = new ArrayList<>()
