@@ -38,5 +38,14 @@ plugins {
 Somewhere in your `build.gradle` add the following snippet:
 
 ```gradle
-
+cucumberReports {
+  outputDir = 'path/for/generated/html'
+  buildName = '0'
+  reports = files('path/to/cucumber-report.json', 'another/cucumber-json.json')
+}
 ```
+
+#### Optional configuration
+
+`parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
+`classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
