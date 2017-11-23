@@ -1,8 +1,18 @@
-group 'com.github.spacialcircumstances.gradle'
 version '0.0.1'
 
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
+    }
+}
+
 apply plugin: 'groovy'
-apply plugin: 'maven-publish'
+apply plugin: 'com.gradle.plugin-publish'
 
 repositories {
     mavenCentral()
@@ -14,10 +24,15 @@ dependencies {
     compile gradleApi()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+pluginBundle {
+    vcsUrl = 'https://github.com/SpacialCircumstances/gradle-cucumber-reporting'
+    description = 'A gradle plugin to generate pretty HTML reports for Cucumber from json report files. Uses https://github.com/damianszczepanik/cucumber-reporting for generating the reports.'
+
+    plugins {
+        cucumberReportsPlugin {
+            id = 'com.github.spacialcircumstances.gradle-cucumber-reporting'
+            displayName = 'Gradle cucumber reporting'
+            tags = ['cucumber', 'reports', "test"]
         }
     }
 }
