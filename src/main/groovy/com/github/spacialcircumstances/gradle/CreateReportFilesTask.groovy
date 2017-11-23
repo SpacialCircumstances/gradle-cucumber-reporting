@@ -6,39 +6,47 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.tasks.TaskAction
 import net.masterthought.cucumber.Configuration
+import org.gradle.api.tasks.TaskExecutionException
 
 class CreateReportFilesTask extends DefaultTask {
     String projectName
     CreateReportFilesTask() {
         doLast {
-            String outputDir = project.extensions.cucumberReports.outputDir
-            String buildName = project.extensions.cucumberReports.buildName
-            Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
-            ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
-            File outputDirectory = new File(outputDir)
-            if(!outputDirectory.exists()) {
-                outputDirectory.mkdirs()
-            }
-
-            Configuration config = new Configuration(outputDirectory, projectName)
-            config.setRunWithJenkins(false)
-            config.setBuildNumber(buildName)
-            config.setParallelTesting(parallelTesting)
-
-            //Check if reports exist
-            List<String> existentFiles = new ArrayList<>()
-            for(File file: reports) {
-                if(file.exists() && file.isFile()) {
-                    existentFiles.add(file.path)
-                } else {
-                    println "Reports file ${file.path} not found"
+            try {
+                String outputDir = project.extensions.cucumberReports.outputDir
+                String buildName = project.extensions.cucumberReports.buildName
+                Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
+                ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
+                File outputDirectory = new File(outputDir)
+                if (!outputDirectory.exists()) {
+                    outputDirectory.mkdirs()
                 }
-            }
 
-            ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
-            Reportable report = reportBuilder.generateReports()
-            if(report != null) {
-                println "Failed tests:  ${report.failedSteps}"
+                Configuration config = new Configuration(outputDirectory, projectName)
+                config.setRunWithJenkins(false)
+                config.setBuildNumber(buildName)
+                config.setParallelTesting(parallelTesting)
+
+                //Check if reports exist
+                List<String> existentFiles = new ArrayList<>()
+                for (File file : reports) {
+                    if (file.exists() && file.isFile()) {
+                        existentFiles.add(file.path)
+                    } else {
+                        println "Reports file ${file.path} not found"
+                    }
+                }
+                
+                println "Generating reports..."
+                ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
+                Reportable report = reportBuilder.generateReports()
+                if (report != null) {
+                    println "Generated report in ${outputDirectory.path}"
+                } else {
+                    throw new RuntimeException("Failed to generate test reports")
+                }
+            } catch (Exception e) {
+                throw new TaskExecutionException(this, e)
             }
         }
     }
