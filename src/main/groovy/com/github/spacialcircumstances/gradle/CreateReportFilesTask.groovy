@@ -8,18 +8,19 @@ import org.gradle.api.tasks.TaskAction
 import net.masterthought.cucumber.Configuration
 
 class CreateReportFilesTask extends DefaultTask {
-    File outputDir
-    String buildName
     String projectName
-    ConfigurableFileCollection reports = project.files()
 
     @TaskAction
     void createReportFiles() {
-        if(!outputDir.exists()) {
-            outputDir.mkdirs()
+        String outputDir = project.extensions.cucumberReports.outputDir
+        String buildName = project.extensions.cucumberReports.buildName
+        ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
+        File outputDirectory = new File(outputDir)
+        if(!outputDirectory.exists()) {
+            outputDirectory.mkdirs()
         }
 
-        Configuration config = new Configuration(outputDir, projectName)
+        Configuration config = new Configuration(outputDirectory, projectName)
         config.setRunWithJenkins(false)
         config.setBuildNumber(buildName)
 
@@ -28,11 +29,15 @@ class CreateReportFilesTask extends DefaultTask {
         for(File file: reports) {
             if(file.exists() && file.isFile()) {
                 existentFiles.add(file.path)
+            } else {
+                println "Reports file ${file.path} not found"
             }
         }
 
         ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
         Reportable report = reportBuilder.generateReports()
-        println "Failed tests:  ${report.failedSteps}"
+        if(report != null) {
+            println "Failed tests:  ${report.failedSteps}"
+        }
     }
 }

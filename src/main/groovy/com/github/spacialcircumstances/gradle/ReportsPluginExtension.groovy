@@ -5,8 +5,8 @@ import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
-    String outputDir = ''
-    String buildName = '0'
+    String outputDir
+    String buildName
     ConfigurableFileCollection reports
     ReportsPluginExtension(Project project) {
         reports = project.files()
