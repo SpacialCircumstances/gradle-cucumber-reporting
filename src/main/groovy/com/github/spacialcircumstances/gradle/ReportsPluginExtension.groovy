@@ -1,8 +1,18 @@
 package com.github.spacialcircumstances.gradle
 
+import org.gradle.api.Project
+import org.gradle.api.file.ConfigurableFileCollection
+import org.gradle.api.file.FileCollection
+
 class ReportsPluginExtension {
-    String projectName = ''
     String outputDir = ''
-    String buildName = ''
-    List<String> reports = new ArrayList<>()
+    String buildName = '0'
+    ConfigurableFileCollection reports
+    ReportsPluginExtension(Project project) {
+        reports = project.files()
+    }
+
+    void setReports(FileCollection reportFiles) {
+        reports.setFrom(reportFiles)
+    }
 }
