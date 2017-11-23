@@ -8,10 +8,10 @@ class ReportsPlugin implements Plugin<Project> {
     void apply(Project project) {
         def extension = project.extensions.create('cucumberReports', ReportsPluginExtension, project)
         project.tasks.create('createCucumberReports', CreateReportFilesTask) {
-            outputDirectory = new File(extension.getOutputDir())
+            outputDir = new File(extension.getOutputDir())
             buildName = extension.getBuildName()
             projectName = project.displayName
-            reportFiles = extension.getReports()
+            reports = extension.getReports()
         }
     }
 }
