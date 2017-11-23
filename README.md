@@ -48,4 +48,5 @@ cucumberReports {
 #### Optional configuration
 
 `parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
+
 `classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
