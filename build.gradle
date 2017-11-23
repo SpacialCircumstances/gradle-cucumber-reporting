@@ -25,6 +25,7 @@ dependencies {
 }
 
 pluginBundle {
+    website = 'https://github.com/SpacialCircumstances/gradle-cucumber-reporting'
     vcsUrl = 'https://github.com/SpacialCircumstances/gradle-cucumber-reporting'
     description = 'A gradle plugin to generate pretty HTML reports for Cucumber from json report files. Uses https://github.com/damianszczepanik/cucumber-reporting for generating the reports.'
 
