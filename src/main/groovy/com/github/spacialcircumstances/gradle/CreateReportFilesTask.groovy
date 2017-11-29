@@ -34,6 +34,11 @@ class CreateReportFilesTask extends DefaultTask {
                     }
                 }
 
+                if(existentFiles.isEmpty()) {
+                    println "No report files found, aborting..."
+                    throw new RuntimeException("No test files found")
+                }
+
                 Configuration config = new Configuration(outputDirectory, projectName)
                 config.setRunWithJenkins(false)
                 config.setBuildNumber(buildName)
