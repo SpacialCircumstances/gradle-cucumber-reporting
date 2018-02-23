@@ -52,8 +52,8 @@ class CreateReportFilesTask extends DefaultTask {
                 ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
                 Reportable report = reportBuilder.generateReports()
                 if (report != null) {
-                    println "Generated report in ${outputDirectory.absolutePath}"
-                    println "Open ${outputDirectory.absolutePath}/overview-features.html to get an overview about the test results"
+                    println "Generated report in ${outputDirectory.absolutePath}/cucumber-html-reports/"
+                    println "Open ${outputDirectory.absolutePath}/cucumber-html-reports/overview-features.html to get an overview about the test results"
                 } else {
                     throw new RuntimeException("Failed to generate test reports")
                 }
