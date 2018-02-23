@@ -50,3 +50,7 @@ cucumberReports {
 `parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
 
 `classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
+
+### License
+
+Just as [https://github.com/damianszczepanik/cucumber-reporting](cucumber-reporting), this plugin is available under the terms of the LGPL 2.1 license.
