@@ -30,7 +30,7 @@ class CreateReportFilesTask extends DefaultTask {
                     if (file.exists() && file.isFile()) {
                         existentFiles.add(file.path)
                     } else {
-                        println "Reports file ${file.path} not found"
+                        println "Reports file ${file.absolutePath} not found"
                     }
                 }
 
@@ -52,7 +52,7 @@ class CreateReportFilesTask extends DefaultTask {
                 ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
                 Reportable report = reportBuilder.generateReports()
                 if (report != null) {
-                    println "Generated report in ${outputDirectory.path}"
+                    println "Generated report in ${outputDirectory.absolutePath}"
                 } else {
                     throw new RuntimeException("Failed to generate test reports")
                 }

@@ -17,6 +17,5 @@ class ReportsPlugin implements Plugin<Project> {
         project.tasks.withType(Test) { Test test ->
             test.finalizedBy(reportTask)
         }
-
     }
 }
