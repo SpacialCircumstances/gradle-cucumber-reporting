@@ -11,6 +11,7 @@ class ReportsPlugin implements Plugin<Project> {
         def extension = project.extensions.create('cucumberReports', ReportsPluginExtension)
         Task reportTask = project.task('generateCucumberReports', type: CreateReportFilesTask) {
             description = "Creates cucumber html reports"
+            group = "Cucumber reports"
             projectName = project.displayName
         }
 
