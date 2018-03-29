@@ -15,6 +15,8 @@ class ReportsPlugin implements Plugin<Project> {
             projectName = project.displayName
         }
 
+        reportTask.onlyIf { ! project.hasProperty('skipReports') }
+
         project.tasks.withType(Test) { Test test ->
             test.finalizedBy(reportTask)
         }
