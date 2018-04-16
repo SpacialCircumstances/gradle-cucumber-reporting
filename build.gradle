@@ -7,7 +7,7 @@ version = '0.0.9'
 group = "com.github.spacialcircumstances"
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
