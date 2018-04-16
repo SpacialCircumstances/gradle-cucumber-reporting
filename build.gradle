@@ -3,7 +3,8 @@ plugins {
     id "com.gradle.plugin-publish" version "0.9.10"
 }
 
-version '0.0.8'
+version = '0.0.8'
+group = "com.github.spacialcircumstances"
 
 repositories {
     mavenCentral()
