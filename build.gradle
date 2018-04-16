@@ -1,6 +1,8 @@
 plugins {
     id "groovy"
     id "com.gradle.plugin-publish" version "0.9.10"
+    id "java-gradle-plugin"
+    id 'maven-publish'
 }
 
 version = '0.0.9'
@@ -13,7 +15,21 @@ repositories {
 dependencies {
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '3.16.0'
     compile localGroovy()
-    compile gradleApi()
+}
+
+gradlePlugin {
+    plugins {
+        cucumberReportsPlugin {
+            id = 'com.github.spacialcircumstances.gradle-cucumber-reporting'
+            implementationClass = 'com.github.spacialcircumstances.gradle.ReportsPlugin'
+        }
+    }
+}
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
 }
 
 pluginBundle {
