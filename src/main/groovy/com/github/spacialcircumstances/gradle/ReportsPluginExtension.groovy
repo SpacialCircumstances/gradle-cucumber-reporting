@@ -9,5 +9,6 @@ class ReportsPluginExtension {
     String buildName
     ConfigurableFileCollection reports
     Boolean parallelTesting = false
+    Boolean runWithJenkins = false
     Map<String, String> classifications = new HashMap<>()
 }

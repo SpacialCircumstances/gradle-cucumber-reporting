@@ -18,6 +18,7 @@ class CreateReportFilesTask extends DefaultTask {
                 Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
                 ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
                 Map<String, String> classifications = project.extensions.cucumberReports.classifications
+                Boolean runWithJenkins = project.extensions.cucumberReports.runWithJenkins
 
                 File outputDirectory = new File(outputDir)
                 if (!outputDirectory.exists()) {
@@ -40,7 +41,7 @@ class CreateReportFilesTask extends DefaultTask {
                 }
 
                 Configuration config = new Configuration(outputDirectory, projectName)
-                config.setRunWithJenkins(false)
+                config.setRunWithJenkins(runWithJenkins)
                 config.setBuildNumber(buildName)
                 config.setParallelTesting(parallelTesting)
                 //Add custom classifications
