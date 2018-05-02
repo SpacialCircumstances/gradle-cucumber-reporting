@@ -39,7 +39,7 @@ Somewhere in your `build.gradle` add the following snippet:
 
 ```gradle
 cucumberReports {
-  outputDir = 'path/for/generated/html'
+  outputDir = file('path/for/generated/html')
   buildName = '0'
   reports = files('path/to/cucumber-report.json', 'another/cucumber-json.json')
 }__
