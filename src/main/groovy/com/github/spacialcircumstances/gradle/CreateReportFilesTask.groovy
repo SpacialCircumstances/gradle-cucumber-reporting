@@ -13,14 +13,13 @@ class CreateReportFilesTask extends DefaultTask {
     CreateReportFilesTask() {
         doLast {
             try {
-                String outputDir = project.extensions.cucumberReports.outputDir
+                File outputDirectory = project.extensions.cucumberReports.outputDir
                 String buildName = project.extensions.cucumberReports.buildName
                 Boolean parallelTesting = project.extensions.cucumberReports.parallelTesting
                 ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
                 Map<String, String> classifications = project.extensions.cucumberReports.classifications
                 Boolean runWithJenkins = project.extensions.cucumberReports.runWithJenkins
 
-                File outputDirectory = new File(outputDir)
                 if (!outputDirectory.exists()) {
                     outputDirectory.mkdirs()
                 }
@@ -35,7 +34,7 @@ class CreateReportFilesTask extends DefaultTask {
                     }
                 }
 
-                if(existentFiles.isEmpty()) {
+                if (existentFiles.isEmpty()) {
                     println "No report files found, aborting..."
                     throw new RuntimeException("No test files found")
                 }

@@ -5,7 +5,7 @@ import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
-    String outputDir
+    File outputDir
     String buildName
     ConfigurableFileCollection reports
     Boolean parallelTesting = false
