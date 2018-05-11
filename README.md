@@ -47,9 +47,9 @@ cucumberReports {
 
 #### Optional configuration
 
-`parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
-
-`classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
+- `parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
+- `classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
+- `testTasksFinalizedByReport`: `true` or `false` determines if the `generateCucumberReports` task finalizes the test tasks. `true` by default.
 
 ### License
 
