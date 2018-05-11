@@ -1,8 +1,6 @@
 package com.github.spacialcircumstances.gradle
 
-import org.gradle.api.Project
 import org.gradle.api.file.ConfigurableFileCollection
-import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
     File outputDir
@@ -10,5 +8,6 @@ class ReportsPluginExtension {
     ConfigurableFileCollection reports
     Boolean parallelTesting = false
     Boolean runWithJenkins = false
+    Boolean testTasksFinalizedByReport = true
     Map<String, String> classifications = new HashMap<>()
 }
