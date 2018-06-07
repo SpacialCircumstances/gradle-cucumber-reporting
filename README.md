@@ -19,7 +19,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.10"
+    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.11"
   }
 }
 
@@ -29,7 +29,7 @@ apply plugin: "com.github.spacialcircumstances.gradle-cucumber-reporting"
 New plugin mechanism (Gradle 2.1+):
 ```gradle
 plugins {
-  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.10"
+  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.11"
 }
 ```
 
@@ -47,9 +47,9 @@ cucumberReports {
 
 #### Optional configuration
 
-`parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
-
-`classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
+- `parallelTesting`: `true` or `false` determines if multiple tests were run in parallel
+- `classifications`: A map with <String, String> pairs that are added to the HTML report, for example os name etc.
+- `testTasksFinalizedByReport`: `true` or `false` determines if the `generateCucumberReports` task finalizes the test tasks. `true` by default.
 
 ### License
 
