@@ -19,7 +19,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.11"
+    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.12"
   }
 }
 
@@ -29,7 +29,7 @@ apply plugin: "com.github.spacialcircumstances.gradle-cucumber-reporting"
 New plugin mechanism (Gradle 2.1+):
 ```gradle
 plugins {
-  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.11"
+  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.12"
 }
 ```
 
