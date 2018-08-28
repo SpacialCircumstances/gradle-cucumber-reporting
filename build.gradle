@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '3.19.0'
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '3.20.0'
     compile localGroovy()
 }
 
