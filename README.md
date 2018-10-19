@@ -19,7 +19,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.15"
+    classpath "gradle.plugin.com.github.spacialcircumstances.gradle-cucumber-reporting:gradle-cucumber-reporting:0.0.16"
   }
 }
 
@@ -29,7 +29,7 @@ apply plugin: "com.github.spacialcircumstances.gradle-cucumber-reporting"
 New plugin mechanism (Gradle 2.1+):
 ```gradle
 plugins {
-  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.15"
+  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.0.16"
 }
 ```
 
@@ -42,7 +42,7 @@ cucumberReports {
   outputDir = file('path/for/generated/html')
   buildName = '0'
   reports = files('path/to/cucumber-report.json', 'another/cucumber-json.json')
-}__
+}
 ```
 
 #### Optional configuration
