@@ -15,7 +15,7 @@ class CreateReportFilesTask extends DefaultTask {
             try {
                 ReportsPluginExtension pluginConfig = project.extensions.cucumberReports
                 File outputDirectory = pluginConfig.outputDir
-                String buildNumber = pluginConfig.buildNumber
+                String buildId = pluginConfig.buildId
                 ConfigurableFileCollection reports = pluginConfig.reports
                 Map<String, String> classifications = pluginConfig.classifications
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
@@ -41,7 +41,7 @@ class CreateReportFilesTask extends DefaultTask {
 
                 Configuration config = new Configuration(outputDirectory, projectName)
                 config.setRunWithJenkins(runWithJenkins)
-                config.setBuildNumber(buildNumber)
+                config.setBuildNumber(buildId)
                 //Add custom classifications
                 for(Map.Entry<String, String> c: classifications) {
                     config.addClassifications(c.key, c.value)

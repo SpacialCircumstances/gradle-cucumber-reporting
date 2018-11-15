@@ -4,7 +4,7 @@ import org.gradle.api.file.ConfigurableFileCollection
 
 class ReportsPluginExtension {
     File outputDir
-    String buildNumber
+    String buildId
     ConfigurableFileCollection reports
     Boolean runWithJenkins = false
     Boolean testTasksFinalizedByReport = true
