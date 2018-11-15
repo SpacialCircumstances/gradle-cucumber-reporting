@@ -9,4 +9,8 @@ class ReportsPluginExtension {
     Boolean runWithJenkins = false
     Boolean testTasksFinalizedByReport = true
     Map<String, String> classifications = new HashMap<>()
+
+    def classification(String name, String value) {
+        classifications.put(name, value)
+    }
 }
