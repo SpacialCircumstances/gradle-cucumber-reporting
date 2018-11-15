@@ -1,10 +1,10 @@
 package com.github.spacialcircumstances.gradle
 
+import com.google.common.collect.Lists
 import net.masterthought.cucumber.ReportBuilder
 import net.masterthought.cucumber.Reportable
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.ConfigurableFileCollection
-import org.gradle.api.tasks.TaskAction
 import net.masterthought.cucumber.Configuration
 import org.gradle.api.tasks.TaskExecutionException
 
@@ -13,12 +13,13 @@ class CreateReportFilesTask extends DefaultTask {
     CreateReportFilesTask() {
         doLast {
             try {
-                File outputDirectory = project.extensions.cucumberReports.outputDir
-                String buildNumber = project.extensions.cucumberReports.buildNumber
-                ConfigurableFileCollection reports = project.extensions.cucumberReports.reports
-                Map<String, String> classifications = project.extensions.cucumberReports.classifications
-                Boolean runWithJenkins = project.extensions.cucumberReports.runWithJenkins
-
+                ReportsPluginExtension pluginConfig = project.extensions.cucumberReports
+                File outputDirectory = pluginConfig.outputDir
+                String buildNumber = pluginConfig.buildNumber
+                ConfigurableFileCollection reports = pluginConfig.reports
+                Map<String, String> classifications = pluginConfig.classifications
+                Boolean runWithJenkins = pluginConfig.runWithJenkins
+                List<String> excludePatterns = pluginConfig.excludeTags
                 if (!outputDirectory.exists()) {
                     outputDirectory.mkdirs()
                 }
@@ -45,6 +46,8 @@ class CreateReportFilesTask extends DefaultTask {
                 for(Map.Entry<String, String> c: classifications) {
                     config.addClassifications(c.key, c.value)
                 }
+
+                config.setTagsToExcludeFromChart((String[])excludePatterns.toArray())
 
                 println "Generating reports..."
                 ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
