@@ -1,0 +1,9 @@
+plugins {
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.3"
+}
+
+cucumberReports {
+    outputDir = file("$projectDir/output/generated-reports")
+    buildId = '0'
+    reports = files("$projectDir/reports/example-report.json")
+}

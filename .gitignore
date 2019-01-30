@@ -4,3 +4,4 @@
 .idea
 gradle-cucumber-reporting.iml
 out/
+example/output/

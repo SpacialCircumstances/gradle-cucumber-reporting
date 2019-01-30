@@ -1,0 +1,2 @@
+rootProject.name = "reports-example"
+includeBuild "../"
