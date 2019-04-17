@@ -1,11 +1,11 @@
 package com.github.spacialcircumstances.gradle
 
-import com.google.common.collect.Lists
+
+import net.masterthought.cucumber.Configuration
 import net.masterthought.cucumber.ReportBuilder
 import net.masterthought.cucumber.Reportable
 import org.gradle.api.DefaultTask
-import org.gradle.api.file.ConfigurableFileCollection
-import net.masterthought.cucumber.Configuration
+import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.TaskExecutionException
 
 class CreateReportFilesTask extends DefaultTask {
@@ -16,7 +16,7 @@ class CreateReportFilesTask extends DefaultTask {
                 ReportsPluginExtension pluginConfig = project.extensions.cucumberReports
                 File outputDirectory = pluginConfig.outputDir
                 String buildId = pluginConfig.buildId
-                ConfigurableFileCollection reports = pluginConfig.reports
+                FileCollection reports = pluginConfig.reports
                 Map<String, String> classifications = pluginConfig.classifications
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
                 List<String> excludePatterns = pluginConfig.excludeTags

@@ -1,11 +1,11 @@
 package com.github.spacialcircumstances.gradle
 
-import org.gradle.api.file.ConfigurableFileCollection
+import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
     File outputDir
     String buildId
-    ConfigurableFileCollection reports
+    FileCollection reports
     Boolean runWithJenkins = false
     Boolean testTasksFinalizedByReport = true
     Map<String, String> classifications = new HashMap<>()
