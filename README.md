@@ -12,7 +12,7 @@ The plugin will automatically run at the end of your `test` task. You can also r
 
 ```gradle
 plugins {
-  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.5"
+  id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.6"
 }
 ```
 
