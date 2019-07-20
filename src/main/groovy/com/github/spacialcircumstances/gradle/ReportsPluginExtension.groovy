@@ -3,6 +3,7 @@ package com.github.spacialcircumstances.gradle
 import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
+    String projectNameOverride
     File outputDir
     String buildId
     FileCollection reports

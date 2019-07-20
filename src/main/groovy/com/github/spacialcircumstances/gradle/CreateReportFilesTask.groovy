@@ -20,6 +20,7 @@ class CreateReportFilesTask extends DefaultTask {
                 Map<String, String> classifications = pluginConfig.classifications
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
                 List<String> excludePatterns = pluginConfig.excludeTags
+                String reportProjectName = (pluginConfig.projectNameOverride != null) ? pluginConfig.projectNameOverride : projectName
                 if (!outputDirectory.exists()) {
                     outputDirectory.mkdirs()
                 }
@@ -39,7 +40,7 @@ class CreateReportFilesTask extends DefaultTask {
                     throw new RuntimeException("No test files found")
                 }
 
-                Configuration config = new Configuration(outputDirectory, projectName)
+                Configuration config = new Configuration(outputDirectory, reportProjectName)
                 config.setRunWithJenkins(runWithJenkins)
                 config.setBuildNumber(buildId)
                 //Add custom classifications
