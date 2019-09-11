@@ -42,6 +42,8 @@ cucumberReports {
 
 ##### Example
 
+A working example (with pre-existing reports) can be found in the example directory.
+
 ```gradle
 cucumberReports {
   //...
