@@ -11,4 +11,5 @@ cucumberReports {
     outputDir = file("$projectDir/output/generated-reports")
     buildId = '0'
     reports = files("$projectDir/reports/example-report.json")
+    trends = file("$projectDir/reports/trends.json")
 }
