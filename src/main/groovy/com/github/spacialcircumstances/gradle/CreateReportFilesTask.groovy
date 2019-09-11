@@ -21,6 +21,9 @@ class CreateReportFilesTask extends DefaultTask {
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
                 List<String> excludePatterns = pluginConfig.excludeTags
                 String reportProjectName = (pluginConfig.projectNameOverride != null) ? pluginConfig.projectNameOverride : projectName
+                File trends = pluginConfig.trends
+                int trendsLimit = pluginConfig.trendsLimit
+
                 if (!outputDirectory.exists()) {
                     outputDirectory.mkdirs()
                 }
@@ -43,6 +46,12 @@ class CreateReportFilesTask extends DefaultTask {
                 Configuration config = new Configuration(outputDirectory, reportProjectName)
                 config.setRunWithJenkins(runWithJenkins)
                 config.setBuildNumber(buildId)
+
+                //Add trends file
+                if (trends != null) {
+                    config.setTrends(trends,trendsLimit)
+                }
+
                 //Add custom classifications
                 for(Map.Entry<String, String> c: classifications) {
                     config.addClassifications(c.key, c.value)

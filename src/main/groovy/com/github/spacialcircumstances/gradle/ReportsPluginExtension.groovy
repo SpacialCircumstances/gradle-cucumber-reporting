@@ -11,6 +11,8 @@ class ReportsPluginExtension {
     Boolean testTasksFinalizedByReport = true
     Map<String, String> classifications = new HashMap<>()
     List<String> excludeTags = new ArrayList<>()
+    File trends
+    int trendsLimit = 0
 
     def classification(String name, String value) {
         classifications.put(name, value)
