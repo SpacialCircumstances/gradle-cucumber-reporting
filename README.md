@@ -37,6 +37,8 @@ cucumberReports {
 - `excludeTags`: A `List<String>` of regexes that will filter out tags so they are not present in the generated report.
 - `runWithJenkins`: Set this to `true` if you are running on a Jenkins. `false` by default.
 - `projectNameOverride`: A `String`. By default, the reports will use the name of your gradle project as the project name. If this property is not null, it will be used instead.
+- `trends`: File containing a trend store.
+- `trendsLimit`: Limit the number of past trends used in report generation.
 
 ##### Example
 
