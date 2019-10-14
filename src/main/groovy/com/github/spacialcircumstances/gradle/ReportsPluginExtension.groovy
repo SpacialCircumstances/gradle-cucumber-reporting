@@ -12,6 +12,7 @@ class ReportsPluginExtension {
     Map<String, String> classifications = new HashMap<>()
     List<String> excludeTags = new ArrayList<>()
     File trends
+    Set<String> notFailingStatuses
     int trendsLimit = 0
 
     def classification(String name, String value) {
