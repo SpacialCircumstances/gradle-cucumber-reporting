@@ -4,6 +4,7 @@ package com.github.spacialcircumstances.gradle
 import net.masterthought.cucumber.Configuration
 import net.masterthought.cucumber.ReportBuilder
 import net.masterthought.cucumber.Reportable
+import net.masterthought.cucumber.json.support.Status
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.TaskExecutionException
@@ -56,6 +57,8 @@ class CreateReportFilesTask extends DefaultTask {
                 for(Map.Entry<String, String> c: classifications) {
                     config.addClassifications(c.key, c.value)
                 }
+
+                config.setNotFailingStatuses(pluginConfig.notFailingStatuses.collect({ Status.valueOf(it.toUpperCase()) }).toSet())
 
                 config.setTagsToExcludeFromChart((String[])excludePatterns.toArray())
 
