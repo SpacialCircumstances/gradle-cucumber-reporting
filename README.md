@@ -39,6 +39,7 @@ cucumberReports {
 - `projectNameOverride`: A `String`. By default, the reports will use the name of your gradle project as the project name. If this property is not null, it will be used instead.
 - `trends`: File containing a trend store.
 - `trendsLimit`: Limit the number of past trends used in report generation.
+- `notFailingStatuses`: (`Set<String>`) Step statuses that should not be marked as failed in the report generation
 
 ##### Example
 
