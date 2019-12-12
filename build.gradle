@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-version = '0.1.14'
+version = '0.1.15'
 group = "com.github.spacialcircumstances"
 
 repositories {
