@@ -5,6 +5,7 @@ import net.masterthought.cucumber.Configuration
 import net.masterthought.cucumber.ReportBuilder
 import net.masterthought.cucumber.Reportable
 import net.masterthought.cucumber.json.support.Status
+import net.masterthought.cucumber.presentation.PresentationMode
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.TaskExecutionException
@@ -45,7 +46,9 @@ class CreateReportFilesTask extends DefaultTask {
                 }
 
                 Configuration config = new Configuration(outputDirectory, reportProjectName)
-                config.setRunWithJenkins(runWithJenkins)
+                if (runWithJenkins) {
+                    config.addPresentationModes(PresentationMode.RUN_WITH_JENKINS)
+                }
                 config.setBuildNumber(buildId)
 
                 //Add trends file
