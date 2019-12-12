@@ -21,6 +21,7 @@ class CreateReportFilesTask extends DefaultTask {
                 FileCollection reports = pluginConfig.reports
                 Map<String, String> classifications = pluginConfig.classifications
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
+                Boolean expandAllSteps = pluginConfig.expandAllSteps
                 List<String> excludePatterns = pluginConfig.excludeTags
                 String reportProjectName = (pluginConfig.projectNameOverride != null) ? pluginConfig.projectNameOverride : projectName
                 File trends = pluginConfig.trends
@@ -48,6 +49,9 @@ class CreateReportFilesTask extends DefaultTask {
                 Configuration config = new Configuration(outputDirectory, reportProjectName)
                 if (runWithJenkins) {
                     config.addPresentationModes(PresentationMode.RUN_WITH_JENKINS)
+                }
+                if (expandAllSteps) {
+                    config.addPresentationModes(PresentationMode.EXPAND_ALL_STEPS)
                 }
                 config.setBuildNumber(buildId)
 

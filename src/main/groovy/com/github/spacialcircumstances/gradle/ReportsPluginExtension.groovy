@@ -8,6 +8,7 @@ class ReportsPluginExtension {
     String buildId
     FileCollection reports
     Boolean runWithJenkins = false
+    Boolean expandAllSteps = false
     Boolean testTasksFinalizedByReport = true
     Map<String, String> classifications = new HashMap<>()
     List<String> excludeTags = new ArrayList<>()
