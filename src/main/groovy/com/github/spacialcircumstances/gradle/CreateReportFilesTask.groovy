@@ -8,10 +8,14 @@ import net.masterthought.cucumber.json.support.Status
 import net.masterthought.cucumber.presentation.PresentationMode
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.FileCollection
+import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskExecutionException
 
 class CreateReportFilesTask extends DefaultTask {
+
+    @Input
     String projectName
+
     CreateReportFilesTask() {
         doLast {
             try {
@@ -57,17 +61,17 @@ class CreateReportFilesTask extends DefaultTask {
 
                 //Add trends file
                 if (trends != null) {
-                    config.setTrends(trends,trendsLimit)
+                    config.setTrends(trends, trendsLimit)
                 }
 
                 //Add custom classifications
-                for(Map.Entry<String, String> c: classifications) {
+                for (Map.Entry<String, String> c : classifications) {
                     config.addClassifications(c.key, c.value)
                 }
 
                 config.setNotFailingStatuses(pluginConfig.notFailingStatuses.collect({ Status.valueOf(it.toUpperCase()) }).toSet())
 
-                config.setTagsToExcludeFromChart((String[])excludePatterns.toArray())
+                config.setTagsToExcludeFromChart((String[]) excludePatterns.toArray())
 
                 println "Generating reports..."
                 ReportBuilder reportBuilder = new ReportBuilder(existentFiles, config)
