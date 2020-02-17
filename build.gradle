@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.0.2'
+    implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.1.0'
     implementation localGroovy()
 }
 
