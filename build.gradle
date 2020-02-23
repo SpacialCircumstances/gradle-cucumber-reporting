@@ -68,10 +68,10 @@ task functionalTest(type: Test) {
         events "passed", "skipped", "failed"
         testLogging.showStandardStreams = true
     }
+    mustRunAfter test
 }
 
-check.dependsOn functionalTest
-functionalTest.mustRunAfter test
+test.finalizedBy functionalTest
 
 gradlePlugin {
     testSourceSets sourceSets.functionalTest
