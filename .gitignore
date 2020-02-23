@@ -6,3 +6,4 @@ gradle-cucumber-reporting.iml
 out/
 example/output/
 example/reports/trends.json
+/src/functionalTest/resources/output/

@@ -1,0 +1,92 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 28042893531,
+              "status": "passed"
+            },
+            "match": {
+              "location": "env.groovy:71"
+            }
+          }
+        ],
+        "line": 2,
+        "name": "Perform google search",
+        "description": "",
+        "id": "search-google;perform-google-search",
+        "after": [
+          {
+            "result": {
+              "duration": 4516654797,
+              "status": "passed"
+            },
+            "match": {
+              "location": "env.groovy:89"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 17383267328,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "I am on the google website",
+            "match": {
+              "location": "SimpleSteps.groovy:11"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1726769594,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I insert a search term",
+            "match": {
+              "location": "SimpleSteps.groovy:15"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2840557190,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I press the search button",
+            "match": {
+              "location": "SimpleSteps.groovy:19"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 92405226,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I should be on the results page",
+            "match": {
+              "location": "SimpleSteps.groovy:23"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Search Google",
+    "description": "",
+    "id": "search-google",
+    "keyword": "Feature",
+    "uri": "example"
+  }
+]

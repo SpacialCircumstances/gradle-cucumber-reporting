@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.1.0'
     implementation localGroovy()
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
 }
 
 gradlePlugin {
@@ -44,4 +45,34 @@ pluginBundle {
             tags = ['cucumber', 'reports', "test"]
         }
     }
+}
+
+sourceSets {
+    functionalTest {
+        groovy {
+            srcDir file('src/functionalTest/groovy')
+        }
+        resources {
+            srcDir file('src/functionalTest/resources')
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+task functionalTest(type: Test) {
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.functionalTest.output.classesDirs
+    classpath = sourceSets.functionalTest.runtimeClasspath
+    testLogging {
+        events "passed", "skipped", "failed"
+        testLogging.showStandardStreams = true
+    }
+}
+
+check.dependsOn functionalTest
+functionalTest.mustRunAfter test
+
+gradlePlugin {
+    testSourceSets sourceSets.functionalTest
 }
