@@ -41,6 +41,7 @@ cucumberReports {
 - `trends`: File containing a trend store.
 - `trendsLimit`: Limit the number of past trends used in report generation.
 - `notFailingStatuses`: (`Set<String>`) Step statuses that should not be marked as failed in the report generation
+- `directorySuffix`: `String`. Sets a suffix for directories.
 
 ##### Example
 

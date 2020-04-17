@@ -22,6 +22,7 @@ class CreateReportFilesTask extends DefaultTask {
                 ReportsPluginExtension pluginConfig = project.extensions.cucumberReports
                 File outputDirectory = pluginConfig.outputDir
                 String buildId = pluginConfig.buildId
+                String directorySuffix = pluginConfig.directorySuffix
                 FileCollection reports = pluginConfig.reports
                 Map<String, String> classifications = pluginConfig.classifications
                 Boolean runWithJenkins = pluginConfig.runWithJenkins
@@ -62,6 +63,11 @@ class CreateReportFilesTask extends DefaultTask {
                 //Add trends file
                 if (trends != null) {
                     config.setTrends(trends, trendsLimit)
+                }
+
+                //Set directory suffix
+                if (directorySuffix != null) {
+                    config.setDirectorySuffix(directorySuffix)
                 }
 
                 //Add custom classifications

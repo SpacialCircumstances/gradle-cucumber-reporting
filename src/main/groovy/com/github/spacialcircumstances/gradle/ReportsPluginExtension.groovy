@@ -5,6 +5,7 @@ import org.gradle.api.file.FileCollection
 class ReportsPluginExtension {
     String projectNameOverride
     File outputDir
+    String directorySuffix
     String buildId
     FileCollection reports
     Boolean runWithJenkins = false
