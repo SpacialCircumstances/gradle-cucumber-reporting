@@ -1,5 +1,6 @@
 package com.github.spacialcircumstances.gradle
 
+import net.masterthought.cucumber.reducers.ReducingMethod
 import org.gradle.api.file.FileCollection
 
 class ReportsPluginExtension {
@@ -16,6 +17,11 @@ class ReportsPluginExtension {
     File trends
     Set<String> notFailingStatuses
     int trendsLimit = 0
+    Set<ReducingMethod> reducingMethods = new HashSet<>()
+
+    def reducingMethod(ReducingMethod reducingMethod) {
+        reducingMethods.add(reducingMethod)
+    }
 
     def classification(String name, String value) {
         classifications.put(name, value)
