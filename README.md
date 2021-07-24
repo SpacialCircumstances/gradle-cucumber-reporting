@@ -42,6 +42,7 @@ cucumberReports {
 - `trendsLimit`: Limit the number of past trends used in report generation.
 - `notFailingStatuses`: (`Set<String>`) Step statuses that should not be marked as failed in the report generation
 - `directorySuffix`: `String`. Sets a suffix for directories.
+- `reducingMethod`: `String`, one of: `MERGE_FEATURES_BY_ID, MERGE_FEATURES_WITH_RETEST, SKIP_EMPTY_JSON_FILES, HIDE_EMPTY_HOOKS`. Adds a reducing method.
 
 ##### Example
 
